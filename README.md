@@ -77,15 +77,21 @@ Furthermore, by training a model to identify this correlation, we could play dif
 <!-- ROADMAP -->
 ## Dataset
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+Our biggest challenge is to source the property information for Vienna. One initial attempt was to use the property purchase index available on the website for Statistics Vienna as a source for housing prices. 
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+However, after working with this data for a while and running different studies, we realized that this data contained property to exchange information mainly for the outer districts of Vienna and not for the central part, which is crucial for our study. Therefore midway through the development of this study, we had to rebuild our dataset from scratch. 
+
+We decided to use a real estate agency in Austria as a source for our information. However, using this website entails data scraping, and the drawback of many properties not having their location disclosed. Also, most of the properties were newly built, so we wouldn’t have data that encompassed all markets. 
+
+<br /><img src="images/dataset.JPG" alt="map" width=100% height=100%>
+
+After using a scraping system to pull out the data for the different districts, we ended with a dataset of properties for sale in the 23 districts of Vienna with around 1200 data points.
+
+We also had access to the average housing cost per square meter for each of Vienna’s districts, so we decided to convert the real estate dataset to price per square meter per property for sale to compare it with the average per district. This comparison yielded a per cent deviation from the average for the district. So now we had property points with a specific price deviation from the mean.
+
+Next, we mapped the distances for each property point to all 8,000 Airbnb listings in Vienna. Having all this information, we could then filter the number of listings within a specified radius around the property to obtain several listings that would be relevant for our study.
+
+We ran three different radiuses to obtain information: 200 meters, 500 meters and 1000 meters, with the results shown in the heatmaps.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -94,25 +100,32 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 <!-- CONTRIBUTING -->
 ## Training
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Once we had the dataset completed, we decided to test two types of training for the mode: a shallow learning model and an artificial neural network model.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+For the shallow learning, we found that the linear regression with a polynomial function yielded the best results, around 88%.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+<br /><img src="images/shallow.JPG" alt="map" width=100% height=100%>
+
+For the ANN, the results were not as good; the model was getting confused with some of the data.
+
+<br /><img src="images/ann.JPG" alt="map" width=100% height=100%>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
+So we decided to go for the shallow learning model.
 
 <!-- LICENSE -->
 ## Deployment
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+With a trained model, we created a Python script deployed to Mapbox; in this script, the user can specify a point in the map and a proposed number of listings around that point, and the model will predict the expected price deviation by square meter. This will be a dynamic layer as the user can specify the output.
+
+<br /><img src="images/workflow.JPG" alt="map" width=100% height=100%>
+
+For the static layer, we generated a heatmap of price deviation using the existing property dataset. This static layer would enable the user to quickly identify hotspots in the city where the price deviation would be more than usual. 
+
+<br /><img src="images/mock.JPG" alt="map" width=100% height=100%>
+
+These layers will be deployed to Mapbox as part of the more significant city project.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -121,9 +134,17 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Who benefits?
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+We believe this tool will help lawmakers legislate around Airbnb to protect the city user, helping them find good properties around the city without having to pay a stratospheric amount of money due to the Airbnb listings making more money.
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+### User story
+
+<br /><img src="images/family.JPG" alt="map" width=100% height=100%>
+
+Let’s say Russ’s family is moving to Austria from Frankfurt in search of greener pastures. They are looking for a property to stay in, but they have no idea if they are paying a fair price or not. They have two ways of doing this:
+
++Usual way by asking a real estate agent for assistance and trusting their capabilities, or 
+
++Using our Airbnb Effect model, the family can quickly identify which areas are most affected by a price increase and narrow the search for properties outside of these areas. They can also predict what will happen to their property with regards to having more or fewer listings around their house. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -132,16 +153,17 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+### Conclusions
 
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+Like any shared economy gig, Airbnb is a new reality that is here to stay and requires attention. However, it’s not necessarily good or bad, its needs regulation to protect the interests of the city and its urban development. 
+
+For example, it’s not in the government’s best interest to have deserted areas in the city at specific points of the calendar year because there are no tourists. In contrast, the primary users of the city have to travel long distances to get to work and back home.
+
+We believe the Airbnb Effect website will be a good tool for assisting regulation.
+
+### Credits
+
+The Airbnb effect is a project of IAAC, Institute of Advanced Architecture of Catalonia, developed at Master In Advanced Computation For Architecture & Design in 2021/2022 by students: Siddhant Choudary, Mansoor Awais, Gerald Mandevhana and Bruno Martorelli. Faculty: Angelos Chronis, Faculty assistant: Aleksander Jastrzebska, Serjoscha Duering and Nariddh Khean
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
