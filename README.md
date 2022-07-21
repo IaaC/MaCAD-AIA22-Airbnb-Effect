@@ -20,11 +20,11 @@
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
-    <li><a href="#usage">Solution</a></li>
-    <li><a href="#roadmap">Dataset</a></li>
-    <li><a href="#contributing">Training</a></li>
-    <li><a href="#license">Deployment</a></li>
-    <li><a href="#contact">Who benefits?</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#dataset">Dataset</a></li>
+    <li><a href="#training">Training</a></li>
+    <li><a href="#deployment">Deployment</a></li>
+    <li><a href="#who">Who benefits?</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -62,7 +62,7 @@ Rhino, grasshopper, Javascript and Python.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- USAGE EXAMPLES -->
+<!-- solution -->
 ## Solution
 
 We can access Airbnb listings data and could source housing data from Statistics Vienna. By correctly using this data, we could establish a correlation between the number of listings and the housing price. 
@@ -74,7 +74,7 @@ Furthermore, by training a model to identify this correlation, we could play dif
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-<!-- ROADMAP -->
+<!-- dataset -->
 ## Dataset
 
 Our biggest challenge is to source the property information for Vienna. One initial attempt was to use the property purchase index available on the website for Statistics Vienna as a source for housing prices. 
@@ -97,7 +97,7 @@ We ran three different radiuses to obtain information: 200 meters, 500 meters an
 
 
 
-<!-- CONTRIBUTING -->
+<!-- training -->
 ## Training
 
 Once we had the dataset completed, we decided to test two types of training for the mode: a shallow learning model and an artificial neural network model.
@@ -114,7 +114,7 @@ For the ANN, the results were not as good; the model was getting confused with s
 
 So we decided to go for the shallow learning model.
 
-<!-- LICENSE -->
+<!-- deployment -->
 ## Deployment
 
 With a trained model, we created a Python script deployed to Mapbox; in this script, the user can specify a point in the map and a proposed number of listings around that point, and the model will predict the expected price deviation by square meter. This will be a dynamic layer as the user can specify the output.
@@ -131,7 +131,7 @@ These layers will be deployed to Mapbox as part of the more significant city pro
 
 
 
-<!-- CONTACT -->
+<!-- who -->
 ## Who benefits?
 
 We believe this tool will help lawmakers legislate around Airbnb to protect the city user, helping them find good properties around the city without having to pay a stratospheric amount of money due to the Airbnb listings making more money.
