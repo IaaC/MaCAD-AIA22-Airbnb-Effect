@@ -34,7 +34,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<br /><img src="images/logo.JPG" alt="map" width=100% height=100%>
+![image](images/logo.jpg)
 
 ### Abstract
 
@@ -44,13 +44,13 @@ Use AI models and ML to predict the influence of Airbnb listings in the housing 
 
 Airbnb has been a blessing and a curse. It has provided an alternative source of income for many people that enables them to do many things; at the same time, it has brought healthy competition to the hotel industry that had comfortably been charging ridiculous prices for travellers. But, on the flip side, it also has affected urban development, forcing people out of the city’s most interesting areas to make space for tourists. Without regulation, this Airbnb effect can quickly become a problem for housing. The consequences are that families and primary users of the cities are being pushed to the city’s fringes.
 
-<br /><img src="images/problem.JPG" alt="map" width=100% height=100%>
+![image](images/problem.jpg)
 
 This problem needs attention. Some of the following graphs will explain the situation:
 
-<br /><img src="images/airbnbvsrental.JPG" alt="map" width=100% height=100%>
+![image](images/airbnbvsrental.jpg)
 
-<br /><img src="images/aptremoved.JPG" alt="map" width=100% height=100%>
+![image](images/aptremoved.jpg)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -67,7 +67,7 @@ Rhino, grasshopper, Javascript and Python.
 
 We can access Airbnb listings data and could source housing data from Statistics Vienna. By correctly using this data, we could establish a correlation between the number of listings and the housing price. 
 
-<br /><img src="images/insideairbnb.JPG" alt="map" width=100% height=100%>
+![image](images/insideairbnb.jpg)
 
 Furthermore, by training a model to identify this correlation, we could play different scenarios to illustrate the problem that Airbnb poses to housing.
 
@@ -83,7 +83,7 @@ However, after working with this data for a while and running different studies,
 
 We decided to use a real estate agency in Austria as a source for our information. However, using this website entails data scraping, and the drawback of many properties not having their location disclosed. Also, most of the properties were newly built, so we wouldn’t have data that encompassed all markets. 
 
-<br /><img src="images/dataset.JPG" alt="map" width=100% height=100%>
+![image](images/dataset.jpg)
 
 After using a scraping system to pull out the data for the different districts, we ended with a dataset of properties for sale in the 23 districts of Vienna with around 1200 data points.
 
@@ -104,11 +104,11 @@ Once we had the dataset completed, we decided to test two types of training for 
 
 For the shallow learning, we found that the linear regression with a polynomial function yielded the best results, around 88%.
 
-<br /><img src="images/shallow.JPG" alt="map" width=100% height=100%>
+![image](images/shallow.jpg)
 
 For the ANN, the results were not as good; the model was getting confused with some of the data.
 
-<br /><img src="images/ann.JPG" alt="map" width=100% height=100%>
+![image](images/ann.jpg)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -119,11 +119,11 @@ So we decided to go for the shallow learning model.
 
 With a trained model, we created a Python script deployed to Mapbox; in this script, the user can specify a point in the map and a proposed number of listings around that point, and the model will predict the expected price deviation by square meter. This will be a dynamic layer as the user can specify the output.
 
-<br /><img src="images/workflow.JPG" alt="map" width=100% height=100%>
+![image](images/workflow.jpg)
 
 For the static layer, we generated a heatmap of price deviation using the existing property dataset. This static layer would enable the user to quickly identify hotspots in the city where the price deviation would be more than usual. 
 
-<br /><img src="images/mock.JPG" alt="map" width=100% height=100%>
+![image](images/mock.jpg)
 
 These layers will be deployed to Mapbox as part of the more significant city project.
 
