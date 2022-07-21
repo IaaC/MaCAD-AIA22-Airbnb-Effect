@@ -138,7 +138,7 @@ We believe this tool will help lawmakers legislate around Airbnb to protect the 
 
 ### User story
 
-<br /><img src="images/family.JPG" alt="map" width=100% height=100% />
+![image](images/family.jpg)
 
 Let’s say Russ’s family is moving to Austria from Frankfurt in search of greener pastures. They are looking for a property to stay in, but they have no idea if they are paying a fair price or not. They have two ways of doing this:
 
